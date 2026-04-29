@@ -19,9 +19,11 @@ const fetchQuotes = async (url) => {
 };
 
 const getArnieQuotes = async (urls) =>
-  Promise.all(urls.map(fetchQuotes)).catch((error) => {
-    console.error("Error fetching Arnie quotes:", error);
-  });
+  Promise.all(urls.map(fetchQuotes))
+    .then((quotes) => quotes)
+    .catch((error) => {
+      console.error("Error fetching Arnie quotes:", error);
+    });
 
 module.exports = {
   getArnieQuotes,
