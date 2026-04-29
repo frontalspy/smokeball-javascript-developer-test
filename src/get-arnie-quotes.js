@@ -6,15 +6,11 @@ const extractMessage = (body) => {
 };
 
 const fetchQuotes = async (url) => {
-  try {
-    const response = await httpGet(url);
-    if (response.status === 200) {
-      return { "Arnie Quote": extractMessage(response.body) };
-    } else {
-      return { FAILURE: extractMessage(response.body) };
-    }
-  } catch (error) {
-    return error;
+  const response = await httpGet(url);
+  if (response.status === 200) {
+    return { "Arnie Quote": extractMessage(response.body) };
+  } else {
+    return { FAILURE: extractMessage(response.body) };
   }
 };
 
